@@ -4,6 +4,9 @@
  */
 package sunrisedentalclinicmanagementsystem;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import sunrise.dental.ui.LoginFrame;
+
 /**
  *
  * @author HP
@@ -14,7 +17,11 @@ public class SunriseDentalClinicManagementSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FlatLightLaf.setup();
+
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginFrame().setVisible(true);
+        });
     }
     
 }

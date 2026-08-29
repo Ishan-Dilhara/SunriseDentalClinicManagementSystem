@@ -1,13 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package TestPackages.sunrise.dental;
+package com.sunrise.dental;
 
-/**
- *
- * @author HP
- */
+import sunrise.dental.dao.UserDAO;
+import sunrise.dental.model.User;
+
 public class LoginTest {
-    
+
+    public static void main(String[] args) {
+
+        UserDAO userDAO = new UserDAO();
+
+        String email = "admin@sunrise.com";
+        String password = "admin123";
+
+        User user = userDAO.login(email, password);
+
+        if (user != null) {
+
+            System.out.println("Login Successful!");
+            System.out.println(
+                    "Welcome: "
+                    + user.getFirstName()
+                    + " "
+                    + user.getLastName()
+            );
+
+            System.out.println(
+                    "Role: "
+                    + user.getRole()
+            );
+
+        } else {
+
+            System.out.println(
+                    "Invalid Email or Password!"
+            );
+        }
+    }
 }
