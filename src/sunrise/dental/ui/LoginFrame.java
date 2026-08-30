@@ -3,10 +3,13 @@ package sunrise.dental.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import sunrise.dental.dao.UserDAO;
 import sunrise.dental.model.User;
+
+import sunrise.dental.ui.admin.AdminDashboard;
+import sunrise.dental.ui.dentist.DentistDashboard;
+import sunrise.dental.ui.receptionist.ReceptionistDashboard;
 public class LoginFrame extends javax.swing.JFrame {
 
     public LoginFrame() {
@@ -61,24 +64,45 @@ public class LoginFrame extends javax.swing.JFrame {
 
         if (user != null) {
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Login Successful!\n\n"
-                    + "Welcome: "
-                    + user.getFirstName()
-                    + " "
-                    + user.getLastName()
-                    + "\nRole: "
-                    + user.getRole()
-            );
+    JOptionPane.showMessageDialog(
+            this,
+            "Login Successful!\n\n"
+            + "Welcome: "
+            + user.getFirstName()
+            + " "
+            + user.getLastName()
+            + "\nRole: "
+            + user.getRole()
+    );
 
-        } else {
+    String role = user.getRole();
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Invalid Email or Password!"
-            );
+        if (role.equalsIgnoreCase("Admin")) {
+
+            AdminDashboard dashboard = new AdminDashboard();
+            dashboard.setVisible(true);
+
+        } else if (role.equalsIgnoreCase("Dentist")) {
+
+            DentistDashboard dashboard = new DentistDashboard();
+            dashboard.setVisible(true);
+
+        } else if (role.equalsIgnoreCase("Receptionist")) {
+
+            ReceptionistDashboard dashboard =
+                    new ReceptionistDashboard();
+            dashboard.setVisible(true);
         }
+
+        this.dispose();
+
+    } else {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Invalid Email or Password!"
+        );
+    }
     }
 
     @SuppressWarnings("unchecked")
@@ -178,7 +202,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+       
         loginUser();
     }//GEN-LAST:event_jButton1ActionPerformed
 
