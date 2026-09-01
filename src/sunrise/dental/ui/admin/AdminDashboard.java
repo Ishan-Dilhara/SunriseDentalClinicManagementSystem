@@ -63,7 +63,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
 
         jButton118.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton118.setText("Dentists");
+        jButton118.setText("Manage Users");
         jButton118.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -192,11 +192,31 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        PatientReport patientReport = new PatientReport();
+
+        patientReport.setVisible(true);
+
+        jDesktopPane1.add(patientReport);
+
+        try {
+            patientReport.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        AppointmentReport appointmentReport = new AppointmentReport();
+
+        appointmentReport.setVisible(true);
+
+        jDesktopPane1.add(appointmentReport);
+
+        try {
+            appointmentReport.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
