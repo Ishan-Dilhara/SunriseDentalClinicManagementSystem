@@ -84,9 +84,8 @@ public class LoginFrame extends javax.swing.JFrame {
 
         } else if (role.equalsIgnoreCase("Dentist")) {
 
-            DentistDashboard dashboard = new DentistDashboard();
+            DentistDashboard dashboard = new DentistDashboard(user);
             dashboard.setVisible(true);
-
         } else if (role.equalsIgnoreCase("Receptionist")) {
 
             ReceptionistDashboard dashboard =

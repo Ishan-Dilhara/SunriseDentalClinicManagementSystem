@@ -5,7 +5,6 @@
 package sunrise.dental.ui.admin;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
