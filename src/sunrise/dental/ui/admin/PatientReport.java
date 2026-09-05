@@ -252,6 +252,7 @@ public class PatientReport extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -276,12 +277,16 @@ public class PatientReport extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabel3.setText("Patient Management");
 
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/patient.png"))); // NOI18N
         jLabel1.setText("Patient Management");
 
-        jLabel2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel2.setText("Register and manage patient information");
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jTable1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -303,10 +308,14 @@ public class PatientReport extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel4.setText("Patient List");
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel4.setText("All Patient");
 
-        searchField.setText("Search by name or phone...");
+        searchField.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
+        jButton6.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -319,40 +328,94 @@ public class PatientReport extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(searchField, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 153));
         jLabel5.setText("Patient List");
 
+        jLabel13.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 153, 204));
         jLabel13.setText("First Name");
 
+        jTextField1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 153, 204));
         jLabel14.setText("Phone");
 
+        jTextField2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 153, 204));
         jLabel15.setText("Last Name");
 
+        jTextField3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 153, 204));
         jLabel16.setText("Date of Birth");
 
+        jComboBox1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 153, 204));
         jLabel17.setText("Gender");
 
+        jTextField5.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 153, 204));
         jLabel18.setText("Email");
 
+        jTextField6.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 153, 204));
         jLabel19.setText("Address");
 
+        jTextField7.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 153, 204));
         jLabel20.setText("Emergency Contact");
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
         jButton1.setText("Save Patient");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,6 +423,8 @@ public class PatientReport extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancel.png"))); // NOI18N
         jButton2.setText("Clear");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -642,10 +707,57 @@ public class PatientReport extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char c = evt.getKeyChar();
+
+        // Numbers only
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return;
+        }
+
+        // Maximum 10 digits
+        if (jTextField2.getText().length() >= 10) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char c = evt.getKeyChar();
+
+        // Numbers only
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return;
+        }
+
+        // Maximum 10 digits
+        if (jTextField4.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        char c = evt.getKeyChar();
+
+        // Numbers only
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return;
+        }
+
+        // Maximum 10 digits
+        if (jTextField7.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField7KeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;

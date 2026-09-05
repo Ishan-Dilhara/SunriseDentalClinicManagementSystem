@@ -48,9 +48,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         setMaximizable(false);
         setResizable(false);
 
-        // =========================================
-        // Hard-coded Payment Method Options
-        // =========================================
         jComboBox2.removeAllItems();
 
         jComboBox2.addItem("-- Select Payment Method --");
@@ -61,20 +58,16 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         // Select default option
         jComboBox2.setSelectedIndex(0);
 
-        // Clear patient details when form opens
         clearPatientDetails();
 
-        // Load completed patients
         loadCompletedPatients();
 
-        // Select default patient option
         jComboBox1.setSelectedIndex(0);
     }
     
     private void loadCompletedPatients() {
         jComboBox1.removeAllItems();
 
-        // Default option
         jComboBox1.addItem("Select Patient");
 
         String sql = """
@@ -106,7 +99,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                         + " "
                         + rs.getString("last_name");
 
-                // ComboBox එකට patient name එක පමණක් පෙන්වයි
                 jComboBox1.addItem(patientName);
             }
 
@@ -182,9 +174,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
                 if (rs.next()) {
 
-                    // =========================================
-                    // Appointment ID
-                    // =========================================
 
                     selectedAppointmentId =
                             rs.getInt("appointment_id");
@@ -193,9 +182,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                             String.valueOf(selectedAppointmentId)
                     );
 
-                    // =========================================
-                    // Date & Time
-                    // =========================================
 
                     jLabel3.setText(
                             rs.getDate("appointment_date")
@@ -203,25 +189,15 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                             + rs.getTime("appointment_time")
                     );
 
-                    // =========================================
-                    // Reason
-                    // =========================================
 
                     jLabel5.setText(
                             rs.getString("reason")
                     );
 
-                    // =========================================
-                    // Dentist Name
-                    // =========================================
 
                     jLabel7.setText(
                             rs.getString("dentist_name")
                     );
-
-                    // =========================================
-                    // Patient Information
-                    // =========================================
 
                     jLabel15.setText(
                             rs.getString("first_name")
@@ -236,10 +212,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                     jLabel23.setText(
                             rs.getString("address")
                     );
-
-                    // =========================================
-                    // Load Treatments
-                    // =========================================
 
                     int appointmentId =
                             rs.getInt("appointment_id");
@@ -277,7 +249,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         DefaultTableModel model =
                 (DefaultTableModel) jTable1.getModel();
 
-        // Clear previous patient's treatments
         model.setRowCount(0);
 
         double totalCost = 0.00;
@@ -320,17 +291,14 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                         String.format("%.2f", cost)
                     });
 
-                    // Calculate total
                     totalCost += cost;
                 }
             }
 
-            // Display total
             jLabel9.setText(
                     String.format("%.2f", totalCost)
             );
 
-            // Automatically put total into Paid Amount
             jTextField1.setText(
                     String.format("%.2f", totalCost)
             );
@@ -466,9 +434,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                     return;
                 }
 
-                // ==========================================
-                // Patient Information
-                // ==========================================
 
                 patientName =
                         rs.getString("first_name")
@@ -478,9 +443,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 phone = rs.getString("phone");
                 address = rs.getString("address");
 
-                // ==========================================
-                // Appointment Information
-                // ==========================================
 
                 appointmentDate =
                         rs.getDate("appointment_date").toString();
@@ -490,9 +452,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 dentistName =
                         rs.getString("dentist_name");
 
-                // ==========================================
-                // Payment Information
-                // ==========================================
 
                 totalAmount =
                         rs.getDouble("total_amount");
@@ -507,9 +466,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                         rs.getString("payment_status");
             }
 
-            // ==========================================
-            // Create PDF Document
-            // ==========================================
 
             Document document = new Document();
 
@@ -519,10 +475,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             );
 
             document.open();
-
-            // ==========================================
-            // Fonts
-            // ==========================================
 
             Font titleFont =
                     FontFactory.getFont(
@@ -544,10 +496,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                             10,
                             BaseColor.BLACK
                     );
-
-            // ==========================================
-            // Clinic Title
-            // ==========================================
 
             Paragraph title =
                     new Paragraph(
@@ -571,9 +519,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
             document.add(new Paragraph(" "));
 
-            // ==========================================
-            // Receipt Information
-            // ==========================================
 
             PdfPTable receiptInfo =
                     new PdfPTable(2);
@@ -655,10 +600,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             document.add(receiptInfo);
 
             document.add(new Paragraph(" "));
-
-            // ==========================================
-            // Patient Information
-            // ==========================================
 
             Paragraph patientHeading =
                     new Paragraph(
@@ -767,10 +708,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
             document.add(new Paragraph(" "));
 
-            // ==========================================
-            // Treatments
-            // ==========================================
-
             Paragraph treatmentHeading =
                     new Paragraph(
                             "TREATMENTS",
@@ -866,10 +803,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             document.add(treatmentTable);
 
             document.add(new Paragraph(" "));
-
-            // ==========================================
-            // Payment Summary
-            // ==========================================
 
             PdfPTable paymentTable =
                     new PdfPTable(2);
@@ -970,15 +903,7 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
             document.add(thankYou);
 
-            // ==========================================
-            // Close PDF
-            // ==========================================
-
             document.close();
-
-            // ==========================================
-            // Open PDF in Google Chrome
-            // ==========================================
 
             openPdfInChrome(filePath);
 
@@ -1017,10 +942,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
             String chromePath = null;
 
-            // ==========================================
-            // Check Google Chrome Installation
-            // ==========================================
-
             String[] possibleChromePaths = {
 
                 "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -1043,9 +964,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 }
             }
 
-            // ==========================================
-            // Open with Chrome
-            // ==========================================
 
             if (chromePath != null) {
 
@@ -1062,8 +980,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                         "Chrome Error",
                         JOptionPane.WARNING_MESSAGE
                 );
-
-                // Fallback: open with default application
                 if (Desktop.isDesktopSupported()) {
 
                     Desktop.getDesktop().open(pdfFile);
@@ -1125,36 +1041,47 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
-        jLabel4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel4.setText("Manage patient payments and generate receipts");
 
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/payment.png"))); // NOI18N
         jLabel1.setText("Payment & Receipt");
 
-        jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 153));
         jLabel6.setText("Completed Appointments");
 
+        jComboBox1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
             }
         });
 
+        jLabel16.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 153, 204));
         jLabel16.setText("Date & Time :");
 
+        jLabel14.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 153, 204));
         jLabel14.setText("Appointment No :");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
+        jLabel17.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 153, 204));
         jLabel17.setText("Reson :");
 
+        jLabel18.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 153, 204));
         jLabel18.setText("Dentist :");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1189,9 +1116,9 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1204,9 +1131,13 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jTable1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(102, 102, 102));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -1228,17 +1159,30 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel8.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("Treatments");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
-        jLabel10.setText("Total Treatment Cost (LKR)");
+        jLabel10.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel10.setText("Total Treatment Cost (LKR) :");
 
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 153, 204));
         jLabel11.setText("Payment Method :");
 
+        jComboBox2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 153, 204));
         jLabel12.setText("Paid Amount :");
 
+        jTextField1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cash.png"))); // NOI18N
         jButton1.setText("Save Payment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1246,6 +1190,8 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancel.png"))); // NOI18N
         jButton2.setText("Clear");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1255,10 +1201,10 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jLabel8)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 38, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1287,7 +1233,7 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1305,21 +1251,28 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel13.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 51, 153));
         jLabel13.setText("Patient Information");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
+        jLabel19.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 153, 204));
         jLabel19.setText("Name");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        jLabel21.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 153, 204));
         jLabel21.setText("Phone");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
+        jLabel24.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 153, 204));
         jLabel24.setText("Address");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -1329,19 +1282,20 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel19)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -1363,7 +1317,7 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1458,9 +1412,7 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // =====================================================
-        // 1. Check Patient Selection
-        // =====================================================
+        
 
         if (jComboBox1.getSelectedIndex() <= 0
                 || selectedAppointmentId == -1) {
@@ -1474,11 +1426,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
             return;
         }
-
-
-        // =====================================================
-        // 2. Check Payment Method
-        // =====================================================
 
         if (jComboBox2.getSelectedIndex() <= 0) {
 
@@ -1495,10 +1442,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         String paymentMethod =
                 jComboBox2.getSelectedItem().toString();
 
-
-        // =====================================================
-        // 3. Get Paid Amount
-        // =====================================================
 
         double paidAmount;
 
@@ -1520,10 +1463,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             return;
         }
 
-
-        // =====================================================
-        // 4. Get Total Treatment Cost
-        // =====================================================
 
         double totalAmount;
 
@@ -1548,10 +1487,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             return;
         }
 
-
-        // =====================================================
-        // 5. Validate Paid Amount
-        // =====================================================
 
         if (paidAmount <= 0) {
 
@@ -1579,10 +1514,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         }
 
 
-        // =====================================================
-        // 6. Bill Status
-        // =====================================================
-
         String billStatus;
 
         if (Math.abs(paidAmount - totalAmount) < 0.01) {
@@ -1594,10 +1525,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             billStatus = "Partially Paid";
         }
 
-
-        // =====================================================
-        // 7. Payment Status
-        // =====================================================
 
         String paymentStatus;
 
@@ -1611,10 +1538,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
         }
 
 
-        // =====================================================
-        // Database Connection
-        // =====================================================
-
         Connection con = null;
 
         int billId = -1;
@@ -1623,18 +1546,10 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
         try {
 
-            // =================================================
-            // 8. Connect Database
-            // =================================================
-
             con = DBConnection.getConnection();
 
             con.setAutoCommit(false);
 
-
-            // =================================================
-            // 9. INSERT BILL
-            // =================================================
 
             String billSQL = """
                 INSERT INTO bills
@@ -1679,11 +1594,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
                 pstBill.executeUpdate();
 
-
-                // =============================================
-                // Get Generated Bill ID
-                // =============================================
-
                 try (
                     ResultSet rs =
                             pstBill.getGeneratedKeys()
@@ -1699,11 +1609,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                     billId = rs.getInt(1);
                 }
             }
-
-
-            // =================================================
-            // 10. INSERT PAYMENT
-            // =================================================
 
             String paymentSQL = """
                 INSERT INTO payments
@@ -1755,11 +1660,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
                 pstPayment.executeUpdate();
 
-
-                // =============================================
-                // Get Generated Payment ID
-                // =============================================
-
                 try (
                     ResultSet rs =
                             pstPayment.getGeneratedKeys()
@@ -1775,13 +1675,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                     paymentId = rs.getInt(1);
                 }
             }
-
-
-            // =================================================
-            // 11. UPDATE APPOINTMENT STATUS
-            // =================================================
-            // status_id = 5
-            // =================================================
 
             String updateAppointmentSQL = """
                 UPDATE appointments
@@ -1814,11 +1707,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 }
             }
 
-
-            // =================================================
-            // 12. INSERT RECEIPT
-            // =================================================
-
             String receiptSQL = """
                 INSERT INTO receipts
                 (
@@ -1848,17 +1736,7 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                 pstReceipt.executeUpdate();
             }
 
-
-            // =================================================
-            // 13. COMMIT TRANSACTION
-            // =================================================
-
             con.commit();
-
-
-            // =================================================
-            // 14. Generate Receipt PDF
-            // =================================================
 
             generateReceiptPDF(
                     paymentId,
@@ -1866,10 +1744,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
                     selectedAppointmentId
             );
 
-
-            // =================================================
-            // 15. Success Message
-            // =================================================
 
             JOptionPane.showMessageDialog(
                     this,
@@ -1881,29 +1755,16 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
             );
 
 
-            // =================================================
-            // 16. Clear Payment Fields
-            // =================================================
-
             jTextField1.setText("");
 
             if (jComboBox2.getItemCount() > 0) {
                 jComboBox2.setSelectedIndex(0);
             }
 
-
-            // =================================================
-            // 17. Clear Selected Appointment ID
-            // =================================================
-
             selectedAppointmentId = -1;
 
 
         } catch (SQLException e) {
-
-            // =================================================
-            // ROLLBACK
-            // =================================================
 
             try {
 
@@ -1930,10 +1791,6 @@ public class ReceptionistHome extends javax.swing.JInternalFrame {
 
 
         } finally {
-
-            // =================================================
-            // CLOSE CONNECTION
-            // =================================================
 
             try {
 

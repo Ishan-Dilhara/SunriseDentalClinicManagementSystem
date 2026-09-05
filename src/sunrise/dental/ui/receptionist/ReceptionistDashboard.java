@@ -5,6 +5,7 @@
 package sunrise.dental.ui.receptionist;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import sunrise.dental.ui.admin.AdminPayments;
 import sunrise.dental.model.User;
 import sunrise.dental.ui.admin.AppointmentReport;
@@ -29,6 +30,7 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
         jButton118 = new javax.swing.JButton();
@@ -36,11 +38,15 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
         jButton120 = new javax.swing.JButton();
         jButton121 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel2 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton118.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
+
+        jButton118.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton118.setText("Appointments");
         jButton118.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,7 +54,7 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton119.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jButton119.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton119.setText("Bills");
         jButton119.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +62,7 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton120.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jButton120.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton120.setText("Logout");
         jButton120.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +70,7 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton121.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jButton121.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButton121.setText("Patients");
         jButton121.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,32 +100,45 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
                 .addComponent(jButton118)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton119)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(jButton120)
                 .addContainerGap())
         );
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sunrise Dental Clinic.png"))); // NOI18N
+
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
+        jPanel21.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel21.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Sunrise Dental Clinic");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 242, 1, 243);
+        jPanel21.add(jLabel1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,7 +192,19 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton119jButton5ActionPerformed
 
     private void jButton120jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton120jButton6ActionPerformed
-        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to logout?",
+                "Logout",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+
+            this.dispose();
+
+        }
     }//GEN-LAST:event_jButton120jButton6ActionPerformed
 
     private void jButton121jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton121jButton4ActionPerformed
@@ -231,6 +262,8 @@ public class ReceptionistDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton120;
     private javax.swing.JButton jButton121;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel21;
     // End of variables declaration//GEN-END:variables

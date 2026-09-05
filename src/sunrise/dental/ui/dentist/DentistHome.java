@@ -280,12 +280,16 @@ public class DentistHome extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel1.setText("Welcome,  ");
 
-        jButton1.setEnabled(false);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/today.png"))); // NOI18N
+        jButton1.setFocusable(false);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Today's Appointments");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -299,26 +303,30 @@ public class DentistHome extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(70, 70, 70)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel4.setText("Here's an overview of your schedule and patient treatments");
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jTable1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(102, 102, 102));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -337,7 +345,8 @@ public class DentistHome extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 204));
         jLabel6.setText("Today's Appointments");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -363,17 +372,27 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton5.setEnabled(false);
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dental.png"))); // NOI18N
+        jButton5.setFocusable(false);
 
+        jComboBox2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 153, 204));
         jLabel14.setText("Name :");
 
+        jLabel16.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 153, 204));
         jLabel16.setText("Emergency contact :");
+
+        jLabel10.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -415,9 +434,14 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jLabel7.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jLabel7.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 204));
         jLabel7.setText("Available Treatments");
 
+        jButton3.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
         jButton3.setText("Add");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,6 +449,8 @@ public class DentistHome extends javax.swing.JInternalFrame {
             }
         });
 
+        jTable3.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jTable3.setForeground(new java.awt.Color(102, 102, 102));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -448,6 +474,7 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.setFocusable(false);
         jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -478,9 +505,14 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jLabel8.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jLabel8.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 204));
         jLabel8.setText("Treatments for this Appointment");
 
+        jTable2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(102, 102, 102));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -499,6 +531,8 @@ public class DentistHome extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
+        jButton4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
         jButton4.setText("Save Treatments");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -506,6 +540,10 @@ public class DentistHome extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 153, 204));
         jLabel9.setText("Total :");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -513,20 +551,20 @@ public class DentistHome extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
+                        .addGap(214, 214, 214)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton4)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -535,20 +573,18 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
 
-        jLabel15.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 51, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -566,7 +602,7 @@ public class DentistHome extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -602,9 +638,7 @@ public class DentistHome extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,12 +681,10 @@ public class DentistHome extends javax.swing.JInternalFrame {
             }
         }
 
-        // Clear checkboxes after adding
         for (int i = 0; i < availableModel.getRowCount(); i++) {
             availableModel.setValueAt(false, i, 0);
         }
 
-        // Update total
         calculateTotal();
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -738,11 +770,9 @@ public class DentistHome extends javax.swing.JInternalFrame {
             return;
         }
 
-        // Get jTable2 model
         DefaultTableModel treatmentModel =
                 (DefaultTableModel) jTable2.getModel();
 
-        // Check treatments
         if (treatmentModel.getRowCount() == 0) {
 
             JOptionPane.showMessageDialog(
@@ -757,9 +787,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
 
         try {
 
-            // ------------------------------------------------
-            // Get Patient ID from ComboBox
-            // ------------------------------------------------
 
             String selectedPatient =
                     jComboBox2.getSelectedItem().toString();
@@ -779,17 +806,10 @@ public class DentistHome extends javax.swing.JInternalFrame {
                 return;
             }
 
-            // ------------------------------------------------
-            // Database Connection
-            // ------------------------------------------------
 
             try (Connection con = DBConnection.getConnection()) {
 
                 con.setAutoCommit(false);
-
-                // ------------------------------------------------
-                // 1. Find Appointment ID
-                // ------------------------------------------------
 
                 String appointmentSql = """
                     SELECT a.appointment_id
@@ -830,10 +850,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
                     }
                 }
 
-                // ------------------------------------------------
-                // No Appointment Found
-                // ------------------------------------------------
-
                 if (appointmentId == -1) {
 
                     con.rollback();
@@ -847,10 +863,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
 
                     return;
                 }
-
-                // ------------------------------------------------
-                // 2. Insert Treatments
-                // ------------------------------------------------
 
                 String treatmentIdSql = """
                     SELECT treatment_id
@@ -875,11 +887,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
                     for (int i = 0;
                             i < treatmentModel.getRowCount();
                             i++) {
-
-                        // jTable2 columns
-                        // 0 = No
-                        // 1 = Treatment
-                        // 2 = Cost
 
                         String treatmentName =
                                 treatmentModel
@@ -911,7 +918,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
                             }
                         }
 
-                        // Treatment not found
                         if (treatmentId == -1) {
 
                             con.rollback();
@@ -926,8 +932,7 @@ public class DentistHome extends javax.swing.JInternalFrame {
 
                             return;
                         }
-
-                        // Insert treatment
+                        
                         insertPs.setInt(
                                 1,
                                 appointmentId
@@ -947,10 +952,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
                     }
                 }
 
-                // ------------------------------------------------
-                // 3. Change Appointment Status to COMPLETED
-                // ------------------------------------------------
-
                 String statusSql = """
                     UPDATE appointments
                     SET status_id = 3
@@ -968,30 +969,18 @@ public class DentistHome extends javax.swing.JInternalFrame {
                     statusPs.executeUpdate();
                 }
 
-                // ------------------------------------------------
-                // 4. Commit Everything
-                // ------------------------------------------------
-
                 con.commit();
 
-                // ------------------------------------------------
-                // 5. Clear UI after successful save
-                // ------------------------------------------------
 
-                // Clear Treatments table
                 treatmentModel.setRowCount(0);
 
-                // Reset total
                 jLabel5.setText("0.00");
 
-                // Clear patient selection
                 jComboBox2.setSelectedIndex(-1);
 
-                // Clear patient information
                 jLabel10.setText("");
                 jLabel11.setText("");
 
-                // Clear Available Treatments checkboxes
                 DefaultTableModel availableModel =
                         (DefaultTableModel) jTable3.getModel();
 
@@ -1006,7 +995,6 @@ public class DentistHome extends javax.swing.JInternalFrame {
                     );
                 }
 
-                // Refresh appointments table
                 loadAppointments();
 
                 JOptionPane.showMessageDialog(
